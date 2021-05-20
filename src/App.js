@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { Fragment } from "react";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +17,8 @@ function App() {
             <Profile />
             <LogoutButton />
           </Fragment>
+        ) : isLoading ? (
+          <div>Loading...</div>
         ) : (
           <LoginButton />
         )}
